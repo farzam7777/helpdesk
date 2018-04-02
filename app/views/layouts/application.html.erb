@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Helpdesk</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<!-- Preloader Start -->
+    <div id="preloader">
+        <div class="preloader--inner"></div>
+    </div>
+    <!-- Preloader End -->
+
+    <div class="wrapper">
+    	<%= yield %>
+    </div>
+  </body>
+
+  <%= javascript_include_tag 'js/color-switcher.min.js', 'data-turbolinks-track': 'reload', async: true, cache: true %>
+  <%= javascript_include_tag 'js/main.js', 'data-turbolinks-track': 'reload', async: true, cache: true %>
+  <%= javascript_include_tag 'js/plugins.min.js', 'data-turbolinks-track': 'reload', async: true, cache: true %>
+
+</html>
