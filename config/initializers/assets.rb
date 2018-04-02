@@ -12,6 +12,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 Rails.application.config.assets.precompile += %w( css/custom.css )
+Rails.application.config.assets.precompile += %w( css/style.css )
 Rails.application.config.assets.precompile += %w( css/plugins.min.css )
 Rails.application.config.assets.precompile += %w( css/responsive-style.css )
 Rails.application.config.assets.precompile += %w( css/colors/color-1.css )
