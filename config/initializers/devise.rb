@@ -272,7 +272,7 @@ Devise.setup do |config|
   # {:redirect_uri => "https://localhost:3001/users/auth/facebook/callback", :skip_jwt => true}
 
   config.omniauth :google_oauth2, '261282479163-6nlf4jppggq6rtm6cpr80hfraaequl98.apps.googleusercontent.com', 'zvd4951zp0y1o1r1k-cAjwo5',
-  { :redirect_uri => "https://helpdesk786.heroku.com/oauth/authorize", :skip_jwt => true }
+  { :redirect_uri => "https://helpdesk786.heroku.com/users/auth/google_oauth2/callback", :skip_jwt => true }
 
   # config.omniauth :linkedin, '77kiaxfdg8dqzm', 'kbAQB4BImtHNbXt0', { :redirect_uri => "http://localhost:3000/users/auth/linkedin/callback", :skip_jwt => true, fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url', 'positions'] }
 
