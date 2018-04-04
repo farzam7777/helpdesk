@@ -259,7 +259,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   config.omniauth :facebook, '151504752339035', 'aad36e348128f5d8a2075d80de1b07a6' , 
-  {:scope => 'publish_stream,email,offline_access,manage_pages'}
+  {:redirect_uri => "https://localhost:3001/users/auth/facebook/callback", :skip_jwt => true}
 
   config.omniauth :google_oauth2, '300931973233-n0shqkm5e9ifi2scbc1v3k4tb7p9kaoh.apps.googleusercontent.com', 'Y88rPvi0DmAItiJSbEQ1pZXi',
   { :redirect_uri => "http://localhost:3000/users/auth/google_oauth2/callback", :skip_jwt => true }

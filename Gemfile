@@ -23,7 +23,7 @@ gem 'devise-bootstrapped'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-facebook'
-gem 'certified'
+gem 'thin'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
