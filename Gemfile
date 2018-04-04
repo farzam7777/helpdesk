@@ -17,6 +17,13 @@ gem 'jbuilder', '~> 2.5'
 
 #Custom Defind Gems
 gem 'high_voltage'
+gem "font-awesome-rails"
+gem 'devise'
+gem 'devise-bootstrapped'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-facebook'
+gem 'certified'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

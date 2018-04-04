@@ -149,6 +149,14 @@ WE MAY RELEASE FUTURE UPDATES SO IT WILL OVERWRITE THIS FILE. IT'S BETTER AND SA
 */
 
 /*------------------------------------*\
+    1. My Custom STYLES
+\*------------------------------------*/
+
+.fa-icon-size{
+  font-size: 20px; 
+}
+
+/*------------------------------------*\
     1. GENERAL STYLES
 \*------------------------------------*/
 html, body {

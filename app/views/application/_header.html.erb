@@ -1,0 +1,88 @@
+<!-- Header Section Start -->
+<header class="header--section style--3">
+  <!-- Header Topbar Start -->
+  <div class="header--topbar bg-dark">
+    <div class="container">
+        <!-- Header Topbar Links Start -->
+        <ul class="header--topbar-links nav ff--primary no--stripes float--left">
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <!-- Header Topbar Links End -->
+
+        <!-- Header Topbar Links Start -->
+        <ul class="header--topbar-links nav ff--primary float--right">
+          <% if !user_signed_in? %>
+            <li>
+              <a href="<%= new_user_session_path %>" class="btn-link fa-icon-size" title="Login" data-toggle="tooltip" data-placement="bottom">
+                <i class="fa fa-user-o"></i>
+              </a>
+            </li>
+            <li>
+              <a href="<%= new_user_registration_path %>" class="btn-link fa-icon-size" title="Sign up" data-toggle="tooltip" data-placement="bottom">
+                <i class="fa fa-user-plus"></i>  
+              </a>
+            </li>
+          <% else %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <strong> <%= current_user.username %> </strong> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="<%= edit_user_registration_path %>"><i class="fa fa-cog"></i> Edit Profile</a></li>
+                  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'fa fa-sign-out' %></li>
+                </ul>
+            </li>
+            <% if !session[:picture_url].nil? %>
+              <li>
+                <a href="member-activity-personal.html"><img width="30" height="30" src="<%= session[:picture_url] %>" alt="" class="img-circle"></a>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <!-- Header Topbar Links End -->
+    </div>
+  </div>
+  <!-- Header Topbar End -->
+
+  <!-- Header Navbar Start -->
+  <div class="header--navbar navbar bg-default" data-trigger="sticky">
+    <div class="container">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle style--3 collapsed" data-toggle="collapse" data-target="#headerNav">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+
+          <!-- Header Navbar Logo Start -->
+          <div class="header--navbar-logo navbar-brand">
+              <a href="index.html">
+                  <img src="/assets/img/logo-black.png" alt="">
+              </a>
+          </div>
+          <!-- Header Navbar Logo End -->
+      </div>
+
+      <!-- Header Search Start -->
+      <div class="header--search style--2 float--right" data-form="validate">
+          <form action="#">
+              <input type="text" name="search" placeholder="I’m looking for..." class="form-control" required>
+
+              <button type="submit" class="btn-link"><i class="fa fa-search"></i></button>
+          </form>
+      </div>
+      <!-- Header Search End -->
+
+      <div id="headerNav" class="navbar-collapse collapse float--right">
+        <!-- Header Nav Links Start -->
+        <ul class="header--nav-links style--3 nav ff--primary">
+          <li><a href="<%= page_path('index') %>"><span>Home</span></a></li>
+        </ul>
+        <!-- Header Nav Links End -->
+      </div>
+    </div>
+  </div>
+  <!-- Header Navbar End -->
+</header>
+<!-- Header Section End -->

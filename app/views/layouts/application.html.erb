@@ -10,14 +10,16 @@
 
   <body>
   	<!-- Preloader Start -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div class="preloader--inner"></div>
-    </div>
+    </div> -->
     <!-- Preloader End -->
 
     <div class="wrapper">
     	<%= render 'header' %>
+      <%= render "shared/flash_messages" %>
     	<%= yield %>
+    	<%= render 'footer' %>
     </div>
   </body>
 
