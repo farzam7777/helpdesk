@@ -3,7 +3,7 @@ class UserProvider < ApplicationRecord
 
   def self.find_for_linkedin_oauth(auth, session)
 				session[:picture_url] = auth.info.image
-        
+
         user = UserProvider.where(:provider => auth.provider, :uid => auth.uid).first
         unless user.nil?
             user.user
@@ -82,7 +82,6 @@ class UserProvider < ApplicationRecord
                 registered_user
             else
                 user = User.create!(
-                    name: auth.info.name,
                             username: auth.info.name,
                             email: auth.info.email,
                             password: Devise.friendly_token[0,20],
