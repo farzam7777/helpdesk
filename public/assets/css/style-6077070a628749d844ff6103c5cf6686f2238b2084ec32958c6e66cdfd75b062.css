@@ -152,24 +152,21 @@ WE MAY RELEASE FUTURE UPDATES SO IT WILL OVERWRITE THIS FILE. IT'S BETTER AND SA
     1. My Custom STYLES
 \*------------------------------------*/
 
+
 .fa-icon-size{
   font-size: 20px; 
 }
 
 .bg-cover{
-    background-image: url(<%= asset_path 'img/banner-img/home-version-3/slider-bg-01.jpg' %>);
+    background-image: url(/assets/img/banner-img/home-version-3/slider-bg-01-a73bea6f32f2249109f4c2ae30686067e0e6d692c59f354091d7693f436374c0.jpg);
 }
 
 .bg-cover2{
-    background-image: url(<%= asset_path 'img/banner-img/home-version-3/slider-bg-02.jpg' %>);
+    background-image: url(/assets/img/banner-img/home-version-3/slider-bg-02-dc5ab9411f7c5f79ed69b4c6ef51dffdb133828382e682fa6fe1cd76fbc3ae6a.jpg);
 }
 
 .bg-cover3{
-    background-image: url(<%= asset_path 'img/banner-img/home-version-3/slider-bg-03.jpg' %>);
-}
-
-.btn-hover:hover{
-    color: white;
+    background-image: url(/assets/img/banner-img/home-version-3/slider-bg-03-7700c1a0e746047e5a2158615c6928c93a460ab43ef25f5fe47e83d79eb9b44a.jpg);
 }
 
 /*------------------------------------*\

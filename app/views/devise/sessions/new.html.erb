@@ -2,6 +2,23 @@
   <div class="col-sm-4 col-sm-offset-4">
     <h1 class="text-center">Log in</h1>
     <hr>
+    <a href="/users/auth/google_oauth2" class="btn btn-block btn-social btn-google">
+      <span class="fa fa-google"></span>
+      Sign in with Google
+    </a>
+
+    <a href="/users/auth/facebook" class="btn btn-block btn-social btn-facebook btn-hover">
+      <span class="fa fa-facebook"></span>
+      Sign in with Facebook
+    </a>
+
+    <a href="/users/auth/linkedin" class="btn btn-block btn-social btn-linkedin btn-hover">
+      <span class="fa fa-linkedin"></span>
+      Sign in with LinkedIn
+    </a>
+
+    <br>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, placeholder: 'Email Address', class: 'form-control' %>
