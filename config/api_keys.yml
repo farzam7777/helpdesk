@@ -1,0 +1,33 @@
+defaults: &defaults
+  linkedin:
+    api_key: "77kiaxfdg8dqzm"
+    api_secret: "kbAQB4BImtHNbXt0"
+    redirect_uri: 'http://localhost:3000/users/auth/linkedin/callback'
+  facebook:
+    api_key: "151504752339035"
+    api_secret: "aad36e348128f5d8a2075d80de1b07a6"
+    redirect_uri: 'https://localhost:3001/users/auth/facebook/callback'
+  google:
+    api_key: '300931973233-n0shqkm5e9ifi2scbc1v3k4tb7p9kaoh.apps.googleusercontent.com'
+    api_secret: 'Y88rPvi0DmAItiJSbEQ1pZXi'
+    redirect_uri: 'http://localhost:3000/users/auth/google_oauth2/callback'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  linkedin:
+    api_key: "86cjk0ubfie4qe"
+    api_secret: "AjNjlXqt3zfdWMzb"
+    redirect_uri: 'https://helpdesk786.herokuapp.com/users/auth/linkedin/callback'
+  facebook:
+    api_key: "608041296203677"
+    api_secret: "df275315a35c5328ccfaa1b1d556f975"
+    redirect_uri: 'https://helpdesk786.herokuapp.com/users/auth/facebook/callback'
+  google:
+    api_key: "261282479163-6nlf4jppggq6rtm6cpr80hfraaequl98.apps.googleusercontent.com"
+    api_secret: "zvd4951zp0y1o1r1k-cAjwo5"
+    redirect_uri: 'https://helpdesk786.herokuapp.com/users/auth/google_oauth2/callback'

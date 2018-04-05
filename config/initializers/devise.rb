@@ -258,24 +258,26 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  #Development_mode
-  # config.omniauth :facebook, '151504752339035', 'aad36e348128f5d8a2075d80de1b07a6' , 
-  # {:redirect_uri => "https://localhost:3001/users/auth/facebook/callback", :skip_jwt => true}
+  API_KEYS = YAML::load_file("#{Rails.root}/config/api_keys.yml")[Rails.env]
 
-  # config.omniauth :google_oauth2, '300931973233-n0shqkm5e9ifi2scbc1v3k4tb7p9kaoh.apps.googleusercontent.com', 'Y88rPvi0DmAItiJSbEQ1pZXi',
-  # { :redirect_uri => "http://localhost:3000/users/auth/google_oauth2/callback", :skip_jwt => true }
+  config.omniauth :facebook, API_KEYS['facebook']['api_key'], API_KEYS['facebook']['api_secret'], 
+  {:redirect_uri => API_KEYS['facebook']['redirect_uri'], :skip_jwt => true}
 
-  # config.omniauth :linkedin, '77kiaxfdg8dqzm', 'kbAQB4BImtHNbXt0', { :redirect_uri => "http://localhost:3000/users/auth/linkedin/callback", :skip_jwt => true, fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url', 'positions'] }
+  config.omniauth :google_oauth2, API_KEYS['google']['api_key'], API_KEYS['google']['api_secret'],
+  { :redirect_uri => API_KEYS['google']['redirect_uri'], :skip_jwt => true }
+
+  config.omniauth :linkedin, API_KEYS['linkedin']['api_key'], API_KEYS['linkedin']['api_secret'], 
+  { :redirect_uri => API_KEYS['linkedin']['redirect_uri'], :skip_jwt => true, fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url', 'positions'] }
 
   #Production_mode
-  config.omniauth :facebook, '608041296203677', 'df275315a35c5328ccfaa1b1d556f975' , 
-  {:redirect_uri => "https://helpdesk786.herokuapp.com/users/auth/facebook/callback", :skip_jwt => true}
+  # config.omniauth :facebook, '608041296203677', 'df275315a35c5328ccfaa1b1d556f975' , 
+  # {:redirect_uri => "https://helpdesk786.herokuapp.com/users/auth/facebook/callback", :skip_jwt => true}
 
-  config.omniauth :google_oauth2, '261282479163-6nlf4jppggq6rtm6cpr80hfraaequl98.apps.googleusercontent.com', 'zvd4951zp0y1o1r1k-cAjwo5',
-  { :redirect_uri => "https://helpdesk786.herokuapp.com/users/auth/google_oauth2/callback", :skip_jwt => true }
+  # config.omniauth :google_oauth2, '261282479163-6nlf4jppggq6rtm6cpr80hfraaequl98.apps.googleusercontent.com', 'zvd4951zp0y1o1r1k-cAjwo5',
+  # { :redirect_uri => "https://helpdesk786.herokuapp.com/users/auth/google_oauth2/callback", :skip_jwt => true }
 
-  config.omniauth :linkedin, '86cjk0ubfie4qe', 'AjNjlXqt3zfdWMzb', 
-  { :redirect_uri => "https://helpdesk786.herokuapp.com/users/auth/linkedin/callback", :skip_jwt => true, fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url', 'positions'] }
+  # config.omniauth :linkedin, '86cjk0ubfie4qe', 'AjNjlXqt3zfdWMzb', 
+  # { :redirect_uri => "https://helpdesk786.herokuapp.com/users/auth/linkedin/callback", :skip_jwt => true, fields: ['id', 'email-address', 'first-name', 'last-name', 'headline', 'location', 'industry', 'picture-url', 'public-profile-url', 'positions'] }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
