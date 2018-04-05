@@ -16,7 +16,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 #Custom Defind Gems
-gem 'high_voltage'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'devise-bootstrapped'
