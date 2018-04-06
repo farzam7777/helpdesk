@@ -7,4 +7,9 @@ class User < ApplicationRecord
          :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
   has_many :user_provider, :dependent => :destroy
+
+  scope :google_users, ->  { joins(:user_provider).where('user_providers.provider = ?', 'google_oauth2') }
+  scope :facebook_users, ->  { joins(:user_provider).where('user_providers.provider = ?', 'facebook') }
+  scope :linked_users, ->  { joins(:user_provider).where('user_providers.provider = ?', 'linkedin') }
+	scope :site_users, ->  { left_outer_joins(:user_provider).where('user_providers.provider is null') }
 end

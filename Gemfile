@@ -26,6 +26,7 @@ gem 'thin'
 gem 'activeadmin'
 gem 'active_skin'
 gem 'active_admin_theme'
+gem 'activeadmin_addons'
 
 gem 'rails_12factor', group: :production
 gem 'pg', '~> 0.21.0', group: :production
