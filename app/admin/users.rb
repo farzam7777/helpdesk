@@ -10,17 +10,17 @@ ActiveAdmin.register User do
 	  selectable_column
 	  column :id
 	  column :email
-	  column :username
+	  column :username																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
 	  actions
 	end
 
 	form multipart: true do |f|
 	  f.inputs "User Details" do
-	  	f.input :email
+	  	f.input :email																																																																																																																																																																																																																																																																																																																																																			
 	  	f.input :username
 	  	if f.object.id.nil?
         f.inputs "Password" do
-	        f.input :password,              :label => "Password"
+	        f.input :password,              :label => "Password"																																																																																																																																																																																																																																																																																																												   
 	        f.input :password_confirmation, :label => "Password Confirmation"
       	end
     	end
