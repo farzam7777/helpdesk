@@ -4,8 +4,8 @@
     <title>HelpDesk</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'%>
   </head>
 
   <body>
@@ -23,8 +23,8 @@
     </div>
   </body>
 
-  <%= javascript_include_tag 'js/color-switcher.min.js', 'data-turbolinks-track': 'reload', async: true, cache: true %>
-  <%= javascript_include_tag 'js/main.js', 'data-turbolinks-track': 'reload', async: true, cache: true %>
-  <%= javascript_include_tag 'js/plugins.min.js', 'data-turbolinks-track': 'reload', async: true, cache: true %>
+  <%= javascript_include_tag 'js/color-switcher.min.js' %>
+  <%= javascript_include_tag 'js/main.js' %>
+  <%= javascript_include_tag 'js/plugins.min.js'%>
 
 </html>
