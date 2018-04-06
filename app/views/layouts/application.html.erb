@@ -25,6 +25,13 @@
 
   <%= javascript_include_tag 'js/main.js', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'js/plugins.min.js', 'data-turbolinks-track': 'reload' %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <script type="text/javascript">
+  
+    $("document").ready(function() { 
+      $("#home_page").trigger('click'); 
+    }); 
+
+  </script>
 
 </html>
