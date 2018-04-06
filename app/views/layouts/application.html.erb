@@ -26,4 +26,10 @@
   <%= javascript_include_tag 'js/main.js', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'js/plugins.min.js', 'data-turbolinks-track': 'reload' %>
 
+  <script type="text/javascript">
+    $('.dropdown').click(function(){
+      $(".dropdown").trigger('hover');
+    });
+  </script>
+
 </html>
