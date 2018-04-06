@@ -23,6 +23,9 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-facebook'
 gem 'thin'
+gem 'activeadmin'
+gem 'active_skin'
+gem 'active_admin_theme'
 
 gem 'rails_12factor', group: :production
 gem 'pg', '~> 0.21.0', group: :production
