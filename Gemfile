@@ -27,6 +27,10 @@ gem 'activeadmin'
 gem 'active_skin'
 gem 'active_admin_theme'
 gem 'activeadmin_addons'
+gem 'simple_form'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+gem 'has_scope'
 
 gem 'rails_12factor', group: :production
 gem 'pg', '~> 0.21.0', group: :production

@@ -1,0 +1,10 @@
+<tr>
+  <td>
+    <h4 class="h6 fw--500 text-darkest"><a href="#" class="btn-link"><%= category.title %></a></h4>
+
+    <p>Started by <a href="#"><%= category.user.username %></a></p>
+  </td>
+  <td>
+    <p><%= time_ago_in_words(category.created_at) %> ago</p>
+  </td>
+</tr>

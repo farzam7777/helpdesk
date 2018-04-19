@@ -17,6 +17,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label "Sign Up As" %><br />
+        <%= f.select(:role, ['Seller', 'Buyer'], {include_blank: "Select One"}, { :class => 'form-control' }) %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>

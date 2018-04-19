@@ -64,6 +64,9 @@ GEM
     arel (8.0.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -248,6 +251,9 @@ GEM
     selenium-webdriver (3.11.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    simple_form (3.5.1)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -298,14 +304,17 @@ DEPENDENCIES
   active_skin
   activeadmin
   activeadmin_addons
+  bootstrap-kaminari-views
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
   devise-bootstrapped
   font-awesome-rails
+  has_scope
   heroku-deflater
   jbuilder (~> 2.5)
+  kaminari
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
   omniauth-facebook
@@ -317,6 +326,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   thin
