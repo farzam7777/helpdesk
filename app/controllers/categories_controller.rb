@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
  	before_action :authenticate_user!, only: [:new, :create, :edit]
  	before_action :check_role, only: [:new, :create, :edit]
  	has_scope :by_title
- 	
+
   def index
   	@categories = apply_scopes(Category).all
   	@categories = Kaminari.paginate_array(@categories).page(params[:page]).per(2)
@@ -14,15 +14,25 @@ class CategoriesController < ApplicationController
 
   def new
   	@category = Category.new
+  	respond_to do |format|
+      format.html {  }
+      format.js
+    end
   end
 
   def create
   	@user = current_user
   	@category = @user.categories.build(category_params)
   	if @category.save
-			redirect_to categories_path, notice: 'Category is Successfully Saved.'
+  		respond_to do |format|
+	      format.html { redirect_to categories_path, notice: 'Category is Successfully Saved.' }
+	      format.js
+	    end
   	else
-  		render :new
+  		respond_to do |format|
+	      format.html { render :new }
+	      format.js
+	    end
   	end
   end
 

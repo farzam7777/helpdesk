@@ -1,0 +1,6 @@
+<% if @category.errors.blank? %>
+  $('#category-modal').modal('hide');
+  $('#categories_section').append('<%= j render @category %>');
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

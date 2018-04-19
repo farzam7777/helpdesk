@@ -1,3 +1,18 @@
+<!-- Page Header Start -->
+<div class="page--header pt--60 pb--60 text-center" data-bg-img="img/page-header-img/bg.jpg" data-overlay="0.85">
+  <div class="container">
+    <div class="title">
+      <h2 class="h1 text-white">All Categories</h2>
+    </div>
+
+    <ul class="breadcrumb text-gray ff--primary">
+      <li><a href="<%= root_path %>" class="btn-link">Home</a></li>
+      <li class="active"><span class="text-primary">Categories</span></li>
+    </ul>
+  </div>
+</div>
+<!-- Page Header End -->
+
 <!-- Page Wrapper Start -->
 <section class="page--wrapper pt--80 pb--20">
   <div class="container">
@@ -36,7 +51,7 @@
 
         <% if user_signed_in? %>
           <div class="alert mt--30">
-            <%= link_to 'Add New Category', new_category_path, class: 'btn btn-primary' %>
+            <%= link_to 'Add New Category', new_category_path, class: 'btn btn-primary', remote: true %>
           </div>
         <% else %>
           <div class="alert mt--30">
