@@ -1,2 +1,114 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<!-- Page Header Start -->
+<div class="page--header pt--60 pb--60 text-center" data-bg-img="img/page-header-img/bg.jpg" data-overlay="0.85">
+  <div class="container">
+    <div class="title">
+      <h2 class="h1 text-white">All Service Offerings</h2>
+    </div>
+
+    <ul class="breadcrumb text-gray ff--primary">
+      <li><a href="<%= root_path %>" class="btn-link">Home</a></li>
+      <li><a href="<%= categories_path %>" class="btn-link">Categories</a></li>
+      <li class="active"><span class="text-primary"><%= @category.title %></span></li>
+    </ul>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Page Wrapper Start -->
+<section class="page--wrapper pt--80 pb--20">
+  <div class="container">
+    <div class="row">
+        <!-- Main Content Start -->
+      <div class="main--content col-md-8 pb--60" data-trigger="stickyScroll">
+        <div class="main--content-inner drop--shadow">
+              <!-- Topics List Start -->
+              <div class="topics--list">
+                  <table class="table">
+                      <thead class="ff--primary fs--14 text-darkest">
+                          <tr>
+                              <th>Title</th>
+                              <th>Type</th>
+                              <% if @user_status %>
+                              	<th>Service Status</th>
+                              <% end %>
+                              <th>Started At</th>
+                          </tr>
+                      </thead>
+
+                      <tbody id="services_section">
+                        <%= render @services %>
+                      </tbody>
+                  </table>
+              </div>
+              <!-- Topics List End -->
+
+              <!-- Page Count Start -->
+
+              <div class="page--count pt--30">
+                <label class="ff--primary fs--14 fw--500 text-darker">
+                  <span>Viewing <%= @services.count %> services (of <%= @services.total_count %> total)</span>
+                  <%= paginate @services, :theme => 'twitter-bootstrap-3' %>
+                </label>
+              </div>
+              
+              <!-- Page Count End -->
+        </div>
+
+        <% if user_signed_in? %>
+        	<% if @user_status %>
+	          <div class="alert mt--30">
+	            <%= link_to 'Add New service', new_category_service_path(@category), class: 'btn btn-primary' %>
+	          </div>
+	        <% end %>
+        <% else %>
+          <div class="alert mt--30">
+              <div class="alert--inner ff--primary text-white bg-primary">
+                  <p>You must be logged in to create new Services.</p>
+              </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- Main Content End -->
+
+      <!-- Main Sidebar Start -->
+      <div class="main--sidebar col-md-4 pb--60" data-trigger="stickyScroll">
+        <!-- Widget Start -->
+        <div class="widget">
+          <h2 class="h4 fw--700 widget--title">Find A Service</h2>
+
+          <!-- Buddy Finder Widget Start -->
+          <div class="buddy-finder--widget">
+            <%= simple_form_for [@category, Service.new], method: :get, remote: true do |f| %>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                  	<label>Title</label>
+                    <input type="text" name="search_by[title]" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                  	<label>Type</label>
+                    <input type="text" name="search_by[type]" class="form-control">
+                    <% if user_signed_in? %>
+                    	<input type="hidden" name="user" value="<%= current_user.id %>">
+                    <% else %>
+                    	<input type="hidden" name="user" value="no">
+                    <% end %>
+                  </div>
+
+                  <div class="">
+                    <%= f.submit 'Search', class: 'btn btn-primary' %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <!-- Buddy Finder Widget End -->
+        </div>
+        <!-- Widget End -->
+      </div>
+      <!-- Main Sidebar End -->
+    </div>
+  </div>
+</section>
+<!-- Page Wrapper End -->

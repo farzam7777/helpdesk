@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <h4 class="h6 fw--500 text-darkest"><a href="<%= category_service_path(@category, service) %>" class="btn-link"><%= service.title %></a></h4>
+  </td>
+
+  <td>
+    <h5 class="h6 fw--500 text-darkest"><a href="#" class="btn-link"><%= service.kind %></a></h5>
+  </td>
+
+  <% if @user_status %>
+  	<td>
+	    <h5 class="h6 fw--500 text-darkest"><a href="#" class="btn-link"><%= service.status.capitalize %></a></h5>
+	  </td>
+  <% end %>
+
+  <td>
+    <p><%= time_ago_in_words(service.created_at) %> ago</p>
+  </td>
+</tr>

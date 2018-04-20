@@ -1,0 +1,75 @@
+<!-- Page Header Start -->
+<div class="page--header pt--60 pb--60 text-center" data-bg-img="img/page-header-img/bg.jpg" data-overlay="0.85">
+  <div class="container">
+    <div class="title">
+      <h2 class="h1 text-white"><%= @service.title %></h2>
+    </div>
+
+    <ul class="breadcrumb text-gray ff--primary">
+      <li><a href="<%= root_path %>" class="btn-link">Home</a></li>
+      <li><a href="<%= categories_path %>" class="btn-link">Categories</a></li>
+      <li><a href="<%= category_path(@service.category) %>" class="btn-link"><%= @service.category.title %></a></li>
+      <li class="active"><span class="text-primary"><%= @service.title %></span></li>
+    </ul>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Page Wrapper Start -->
+<section class="page--wrapper pt--80 pb--20">
+    <div class="container">
+        <div class="row">
+            <!-- Main Content Start -->
+            <div class="main--content col-md-8" data-trigger="stickyScroll">
+                <div class="main--content-inner">
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-6 pb--60">
+                            <!-- Product Summery Start -->
+                            <div class="topics--list">
+						                  <table class="table">
+						                      <thead class="ff--primary fs--14 text-darkest">
+						                          <tr>
+						                              <th>Title</th>
+						                              <th>Type</th>
+						                              <th>Started At</th>
+						                          </tr>
+						                      </thead>
+
+						                      <tbody id="services_section">
+						                        <%= render @service %>
+						                      </tbody>
+						                  </table>
+						              </div>
+                            <!-- Product Summery End -->
+                        </div>
+                    </div>
+
+                    <!-- Product Details Nav Start -->
+                    <div class="product--details-nav">
+                        <ul class="nav ff--primary fs--18 fw--600 text-black bg-lighter">
+                            <li class="active">
+                                <a href="#produtDetailsTab01" data-toggle="tab">Description</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Product Details Nav End -->
+
+                    <!-- Product Details Start -->
+                    <div class="product--details tab-content pb--60">
+                        <!-- Tab Pane Start -->
+                        <div class="tab-pane fade in active" id="produtDetailsTab01">
+                            <div class="content--inner fs--14">
+                                <p><%= @service.description %></p>
+                            </div>
+                        </div>
+                        <!-- Tab Pane End -->
+                    </div>
+                    <!-- Product Details End -->
+                </div>
+            </div>
+            <!-- Main Content End -->
+        </div>
+    </div>
+</section>
+<!-- Page Wrapper End -->

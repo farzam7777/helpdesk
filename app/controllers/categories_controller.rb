@@ -40,6 +40,15 @@ class CategoriesController < ApplicationController
   end
 
   def show
+  	@category = Category.find(params[:id])
+  	if current_user == @category.user
+  		@services = @category.services
+  		@user_status = true
+  	else
+  		@services = @category.services.where(status: 'public')
+  		@user_status = false
+  	end
+  	@services = Kaminari.paginate_array(@services).page(params[:page]).per(2)
   end
 
   private
