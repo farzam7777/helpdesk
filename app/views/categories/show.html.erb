@@ -120,7 +120,7 @@
 
         <% if user_signed_in? %>
           <% if current_user == @category.manager %>
-            <div class="alert mt--30">
+            <div class="alert">
               <%= link_to 'Inivite New Member', new_category_invitation_path(@category), remote: true, class: 'btn btn-primary' %>
             </div>
           <% end %>
