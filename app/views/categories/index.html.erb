@@ -54,13 +54,15 @@
         </div>
 
         <% if user_signed_in? %>
-          <div class="alert mt--30">
-            
-            <%= link_to "Create new Category", new_category_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', class: 'btn btn-primary'} %>
+          <% if current_user.role == 'Seller' %>
+            <div class="alert mt--30">
+              
+              <%= link_to "Create new Category", new_category_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', class: 'btn btn-primary'} %>
 
-            <div id="myModal" class="modal fade" role="dialog"> </div>
+              <div id="myModal" class="modal fade" role="dialog"> </div>
 
-          </div>
+            </div>
+          <% end %>
         <% else %>
           <div class="alert mt--30">
               <div class="alert--inner ff--primary text-white bg-primary">

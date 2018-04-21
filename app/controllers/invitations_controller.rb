@@ -34,24 +34,28 @@ class InvitationsController < ApplicationController
 
 	def accept
 		@invitation = Invitation.find_by_token(params[:token])
-		if User.all.map(&:email).include? @invitation.email
-			@user = User.find_by_email(@invitation.email)
-			CategoryUser.create(category_id: @invitation.category_id, user_id: @user.id, permission: @invitation.permission)
+		if @invitation.present?
+			if User.all.map(&:email).include? @invitation.email
+				@user = User.find_by_email(@invitation.email)
+				CategoryUser.create(category_id: @invitation.category_id, user_id: @user.id, permission: @invitation.permission)
 
-			redirect_to root_path, notice: 'You have been Successsfully Associated with Invited Category.' 
-			@invitation.destroy
+				redirect_to root_path, notice: 'You have been Successsfully Associated with Invited Category.' 
+				@invitation.destroy
+			else
+				@password = SecureRandom.hex(3)
+				@user = User.new(email: @invitation.email, password: @password, password_confirmation: @password)
+				@user.confirmed_at = DateTime.now
+				@user.save
+
+				CategoryUser.create(category_id: @invitation.category_id, user_id: @user.id, permission: @invitation.permission)
+				
+				InvitationMailer.user_cred_mail(@user, @password).deliver
+
+				@invitation.destroy
+				redirect_to root_path, notice: 'Check your Email to get Valid Credentails to Login.'
+			end
 		else
-			@password = SecureRandom.hex(3)
-			@user = User.new(email: @invitation.email, password: @password, password_confirmation: @password)
-			@user.confirmed_at = DateTime.now
-			@user.save
-
-			CategoryUser.create(category_id: @invitation.category_id, user_id: @user.id, permission: @invitation.permission)
-			
-			InvitationMailer.user_cred_mail(@user, @password).deliver
-
-			@invitation.destroy
-			redirect_to root_path, notice: 'Check your Email to get Valid Credentails to Login.'
+			redirect_to root_path, alert: 'Invalid Token'
 		end
 	end
 
