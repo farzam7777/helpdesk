@@ -20,3 +20,15 @@
 		<div class="col-md-3"></div>
 	</div>	
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$val = $('#pages_role').val()
+		if($val == ''){
+
+		}
+		else{
+			$('option:not(:selected)').prop('disabled', true);
+		}
+	});
+</script>
