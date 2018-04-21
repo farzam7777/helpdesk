@@ -16,12 +16,12 @@
           <% if !user_signed_in? %>
             <li>
               <a href="<%= new_user_session_path %>" class="btn-link fa-icon-size" title="Login" data-toggle="tooltip" data-placement="bottom">
-                <i class="fa fa-user-o"></i>
+                <p> <span>Login </span> <i class="fa fa-user-o"></i> </p>
               </a>
             </li>
             <li>
               <a href="<%= new_user_registration_path %>" class="btn-link fa-icon-size" title="Sign up" data-toggle="tooltip" data-placement="bottom">
-                <i class="fa fa-user-plus"></i>  
+                <p> <span> Sign Up </span> <i class="fa fa-user-plus"></i></p>  
               </a>
             </li>
           <% else %>

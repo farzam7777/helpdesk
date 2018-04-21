@@ -1,0 +1,20 @@
+<div class="col-md-3 col-xs-6 col-xxs-12">
+  <!-- Member Item Start -->
+  <div class="member--item online member-padding">
+
+    <div class="name">
+      <h3 class="h6 fs--12">
+        <% if user.username.nil? %>
+          <a href="#" class="btn-link"><%= user.email %></a>
+        <% else %>
+          <a href="#" class="btn-link"><%= user.username %></a>
+        <% end %>
+      </h3>
+    </div>
+
+    <div class="activity">
+      <p>Member</p>
+    </div>
+  </div>
+  <!-- Member Item End -->
+</div>

@@ -32,6 +32,9 @@
                               	<th>Service Status</th>
                               <% end %>
                               <th>Started At</th>
+                              <% if @user_permission %>
+                                <th width="1%">Options</th>
+                              <% end %>
                           </tr>
                       </thead>
 
@@ -45,9 +48,11 @@
               <!-- Page Count Start -->
 
               <div class="page--count pt--30">
-                <label class="ff--primary fs--14 fw--500 text-darker">
-                  <span>Viewing <%= @services.count %> services (of <%= @services.total_count %> total)</span>
-                  <%= paginate @services, :theme => 'twitter-bootstrap-3' %>
+                <label class="ff--primary fs--14 fw--500 text-darker" id="paginate-services">
+                  <span id="services-count">Viewing <%= @services.count %> services (of <%= @services.total_count %> total)</span>
+                  <div id="paginator" class="pull-right">
+                    <%= paginate @services, :theme => 'twitter-bootstrap-3', remote: true, window: 2, outer_window: 3 %>
+                  </div>
                 </label>
               </div>
               
@@ -55,7 +60,7 @@
         </div>
 
         <% if user_signed_in? %>
-        	<% if @user_status %>
+        	<% if @user_status and @user_permission %>
 	          <div class="alert mt--30">
 	            <%= link_to 'Add New service', new_category_service_path(@category), class: 'btn btn-primary' %>
 	          </div>
@@ -66,6 +71,59 @@
                   <p>You must be logged in to create new Services.</p>
               </div>
           </div>
+        <% end %>
+
+        <!-- Page Wrapper Start -->
+        <section class="page--wrapper pt--80 pb--20">
+          <div class="container">
+            <div class="row">
+              <!-- Main Content Start -->
+                    <div class="main--content col-md-8 pb--60" data-trigger="stickyScroll">
+                        <div class="main--content-inner">
+                            <!-- Filter Nav Start -->
+                            <div class="filter--nav pb--30 clearfix">
+                                <div class="filter--link float--left">
+                                    <h2 class="h4">All Members : <%= @members.count + 1 %></h2>
+                                </div>
+                            </div>
+                            <!-- Filter Nav End -->
+
+                            <!-- Member Items Start -->
+                            <div class="member--items">
+                                <div class="row gutter--15 AdjustRow" id="member-section">
+                                    <div class="col-md-3 col-xs-6 col-xxs-12">
+                                      <!-- Member Item Start -->
+                                      <div class="member--item online member-padding">
+
+                                        <div class="name">
+                                          <h3 class="h6 fs--12">
+                                            <a href="#" class="btn-link"><%= @category.user.username %></a>
+                                          </h3>
+                                        </div>
+
+                                        <div class="activity">
+                                          <p> <strong> Manager </strong> </p>
+                                        </div>
+                                      </div>
+                                      <!-- Member Item End -->
+                                    </div>
+                                    <%= render @members %>
+                                </div>
+                            </div>
+                            <!-- Member Items End -->
+                        </div>
+                    </div>
+                    <!-- Main Content End -->
+            </div>
+          </div>
+        </section>
+
+        <% if user_signed_in? %>
+          <% if current_user == @category.manager %>
+            <div class="alert mt--30">
+              <%= link_to 'Inivite New Member', new_category_invitation_path(@category), remote: true, class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <!-- Main Content End -->
@@ -83,12 +141,12 @@
                 <div class="col-xs-12">
                   <div class="form-group">
                   	<label>Title</label>
-                    <input type="text" name="search_by[title]" class="form-control">
+                    <input type="text" name="search_by[title]" class="form-control" id="title-input">
                   </div>
 
                   <div class="form-group">
                   	<label>Type</label>
-                    <input type="text" name="search_by[type]" class="form-control">
+                    <input type="text" name="search_by[type]" class="form-control" id="type-input">
                     <% if user_signed_in? %>
                     	<input type="hidden" name="user" value="<%= current_user.id %>">
                     <% else %>
@@ -98,6 +156,7 @@
 
                   <div class="">
                     <%= f.submit 'Search', class: 'btn btn-primary' %>
+                    <%= f.submit 'Reset', class: 'btn btn-success pull-right' %>
                   </div>
                 </div>
               </div>

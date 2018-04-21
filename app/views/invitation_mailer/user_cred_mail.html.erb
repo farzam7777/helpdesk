@@ -1,0 +1,14 @@
+<h1>Invitation Email</h1>
+
+<p>
+  <%= @greeting %>,
+</p>
+
+<p>
+	Use these credentials to <%= link_to 'Login', new_user_session_url %>
+</p>
+
+<p> 
+	<span>Email: </span> <span> <%= @user.email %> </span> <br>
+	<span>Password: </span> <span> <%= @password %> </span> <br> 
+</p>

@@ -1,0 +1,8 @@
+<% if @category.errors.blank? %>
+  $('#myModal').modal('toggle')
+  $("#category_<%= @category.id %>").fadeOut(200).fadeIn(500, function(){
+	  $(this).replaceWith("<%= j render @category %>")
+	});
+<% else %>
+  // TODO: show the errors in the UI
+<% end %>

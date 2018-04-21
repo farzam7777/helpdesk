@@ -1,0 +1,15 @@
+<h1>Invitation Email</h1>
+
+<p>
+  <%= @greeting %>,
+</p>
+
+<p>
+	You have been invited by <%= @user_from.username %> for his category named as <%= link_to @category.title, category_url(@category) %>, You are allowed to <%= @permission %> stuff.
+</p>
+
+<% if @permission == 'Manage' %>
+	<p> You are allowed to Edit every thing in invited category. </p>
+<% end %>
+
+<p> <%= link_to 'Click Here to Accept Invitation', accept_category_invitations_url(@category, token: @token) %> </p>

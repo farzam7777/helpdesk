@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420130044) do
+ActiveRecord::Schema.define(version: 20180420191138) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(version: 20180420130044) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "category_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.string "permission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_category_users_on_category_id"
+    t.index ["user_id"], name: "index_category_users_on_user_id"
+  end
+
+  create_table "invitations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "inviter_id"
+    t.string "email"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.string "permission"
   end
 
   create_table "services", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -96,5 +116,7 @@ ActiveRecord::Schema.define(version: 20180420130044) do
   end
 
   add_foreign_key "categories", "users"
+  add_foreign_key "category_users", "categories"
+  add_foreign_key "category_users", "users"
   add_foreign_key "user_providers", "users"
 end

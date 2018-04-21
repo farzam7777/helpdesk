@@ -5,7 +5,7 @@
       <h2 class="h1 text-white">All Categories</h2>
     </div>
 
-    <ul class="breadcrumb text-gray ff--primary">
+    <ul class="breadcrumb text-gray ff--primary" id="header">
       <li><a href="<%= root_path %>" class="btn-link">Home</a></li>
       <li class="active"><span class="text-primary">Categories</span></li>
     </ul>
@@ -22,11 +22,12 @@
         <div class="main--content-inner drop--shadow">
               <!-- Topics List Start -->
               <div class="topics--list">
-                  <table class="table">
+                  <table class="table" id="table-sec">
                       <thead class="ff--primary fs--14 text-darkest">
                           <tr>
-                              <th>Title</th>
-                              <th>Started At</th>
+                            <th>Title</th>
+                            <th>Started At</th> 
+                            <th>Options</th>
                           </tr>
                       </thead>
 
@@ -41,8 +42,11 @@
 
               <div class="page--count pt--30">
                 <label class="ff--primary fs--14 fw--500 text-darker">
-                  <span>Viewing <%= @categories.count %> topics (of <%= @categories.total_count %> total)</span>
-                  <%= paginate @categories, :theme => 'twitter-bootstrap-3' %>
+                  <span id="categories-count">Viewing <%= @categories.count %> topics (of <%= @categories.total_count %> total)</span>
+                  
+                  <div id="categories-paginator" class="pull-right">
+                    <%= paginate @categories, :theme => 'twitter-bootstrap-3', remote: true, window: 2, outer_window: 3 %>
+                  </div>
                 </label>
               </div>
               
@@ -51,7 +55,11 @@
 
         <% if user_signed_in? %>
           <div class="alert mt--30">
-            <%= link_to 'Add New Category', new_category_path, class: 'btn btn-primary', remote: true %>
+            
+            <%= link_to "Create new Category", new_category_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal', class: 'btn btn-primary'} %>
+
+            <div id="myModal" class="modal fade" role="dialog"> </div>
+
           </div>
         <% else %>
           <div class="alert mt--30">
@@ -79,6 +87,7 @@
                   </div>
                   <div class="">
                     <%= f.submit 'Search', class: 'btn btn-primary' %>
+                    <%= link_to 'Reset', '#header', class: 'btn btn-success pull-right', id: 'reset' %>
                   </div>
                 </div>
               </div>

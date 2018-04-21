@@ -15,5 +15,10 @@ Rails.application.routes.draw do
 
   resources :categories do
     resources :services
+    resources :invitations do
+      collection do
+        get 'accept'
+      end
+    end
   end
 end

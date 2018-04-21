@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-  	if resource.role.present?
-    	root_path
+    if resource.email == 'admin@example.com'
+      admin_dashboard_path
     else
-    	complete_profile_pages_path
+    	if resource.role.present?
+      	root_path
+      else
+      	complete_profile_pages_path
+      end
     end
   end
 

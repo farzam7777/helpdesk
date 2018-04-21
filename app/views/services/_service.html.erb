@@ -16,4 +16,18 @@
   <td>
     <p><%= time_ago_in_words(service.created_at) %> ago</p>
   </td>
+
+  <% if @user_permission %>
+    <td>
+      <h5 class="h6 fw--500 text-darkest">
+        <a href="#" class="btn-link">
+        
+          <%= link_to '', edit_category_service_path(@category, service), class: 'fa fa-pencil', title: 'Edit', data: { toggle: 'tooltip' } %>
+
+          <%= link_to '', [@category, service], method: :delete, class: 'fa fa-trash', title: 'Delete', data: { toggle: 'tooltip', confirm: "Are you sure?" }, style: 'padding-left: 10px' %>
+            
+        </a>
+      </h5>
+    </td>
+  <% end %>
 </tr>

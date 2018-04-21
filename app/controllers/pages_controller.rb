@@ -10,7 +10,8 @@ class PagesController < ApplicationController
 
   def create
   	current_user.role = params[:pages][:role]
+    current_user.username = params[:pages][:username]
   	current_user.save
-  	redirect_to root_path, notice: 'Your Role is Saved Successfully.'
+  	redirect_to root_path, notice: 'Your Profile is Updated Successfully.'
   end
 end

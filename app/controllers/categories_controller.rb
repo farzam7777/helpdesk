@@ -22,7 +22,8 @@ class CategoriesController < ApplicationController
 
   def create
   	@user = current_user
-  	@category = @user.categories.build(category_params)
+  	@category = Category.new(category_params)
+    @category.user = current_user
   	if @category.save
   		respond_to do |format|
 	      format.html { redirect_to categories_path, notice: 'Category is Successfully Saved.' }
@@ -37,18 +38,63 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    @category = Category.find(params[:id])
+    puts "here"
+    respond_to do |format|
+      format.html { }
+      format.js
+    end
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    if @category.update category_params
+      respond_to do |format|
+        format.html { redirect_to categories_path, notice: 'Category Successfully Updated.' }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.js
+      end
+    end
   end
 
   def show
   	@category = Category.find(params[:id])
-  	if current_user == @category.user
+  	if current_user == @category.user or ( @category.users.include? current_user and @category.permission_status(current_user) and@category.permission(current_user) == "Manage" )
   		@services = @category.services
+      @invitation = Invitation.new
   		@user_status = true
-  	else
+      @user_permission = true
+  	elsif current_user == @category.user or ( @category.users.include? current_user and @category.permission_status(current_user) and@category.permission(current_user) == "Read" )
+      @services = @category.services
+      @invitation = Invitation.new
+      @user_status = true
+      @user_permission = false
+    else
   		@services = @category.services.where(status: 'public')
   		@user_status = false
+      @user_permission = false
   	end
+
+    if @category.users.include? current_user
+      @user_status = true
+    end
+
   	@services = Kaminari.paginate_array(@services).page(params[:page]).per(2)
+    @members = @category.users
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    if @category.destroy
+      respond_to do |format|
+        format.html { redirect_to @category, notice: 'Category Successfully Deleted.' }
+        format.js
+      end
+    end
   end
 
   private

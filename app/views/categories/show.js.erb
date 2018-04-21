@@ -1,0 +1,2 @@
+$("#services_section").html("<%= escape_javascript render @services %>")
+$("#paginator").html("<%= escape_javascript paginate @services, :theme => 'twitter-bootstrap-3', remote: true, window: 2, outer_window: 3 %>")
